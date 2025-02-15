@@ -37,7 +37,7 @@ final class PlexTV
      *
      * @param string $plexClientIdentifier Unique identifier for the Plex client.
      * @param string $plexProduct Name of the Plex product making the request.
-     * @param bool $string Whether to return a string-based response (default: true).
+     * @param bool $strong Whether to return strong code (default: true).
      *
      * @return GetPinResponseInterface The response containing the authentication PIN.
      *
@@ -49,9 +49,9 @@ final class PlexTV
     public function getAuthPin(
         string $plexClientIdentifier,
         string $plexProduct,
-        bool $string = true
+        bool $strong = true
     ): GetPinResponseInterface {
-        $getAuthPinRequest = new GetAuthPin(self::BASE_URL, $plexClientIdentifier, $plexProduct, $string);
+        $getAuthPinRequest = new GetAuthPin(self::BASE_URL, $plexClientIdentifier, $plexProduct, $strong);
 
         return $this->plexClient->makeRequest($getAuthPinRequest);
     }
